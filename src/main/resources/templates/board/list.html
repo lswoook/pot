@@ -2,43 +2,113 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/common :: head ('Board')">
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link th:href="@{/starter-template.css}" rel="stylesheet">
-    <title>This is board</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link th:href="@{/css/starter-template.css}" rel="stylesheet">
+  <title>This is board</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:replace="fragments/common :: menu('board')">
-    </nav>
-    <div class="container">
-        <h2>Board</h2>
-        <div>게시글 갯수 : <span th:text="${#lists.size(boards)}"></span></div>
-        <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">번호</th>
-                <th scope="col">제목</th>
-                <th scope="col">내용</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr th:each="board : ${boards}">
-                <td th:text = "${board.id}"></td>
-                <td th:text = "${board.title}"></td>
-                <td th:text = "${board.id}"></td>
-              </tr>
-            </tbody>
-          </table>
-            <div class = "text-right">
-                <a type="button" class="btn btn-primary" th:href="@{/board/form}">Write</a>
-            </div>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:replace="fragments/common :: menu('board')">
+  </nav>
+  <div class="container">
+    <h2>Covid lounge</h2>
+    <div>게시글 갯수 : <span th:text="${boards.totalElements}"></span></div>
+
+    <form class="form-inline d-flex justify-content-end mt-3" method="GET" th:action="@{/board/list}">
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="searchText" class="sr-only">Search...</label>
+        <input type="text" class="form-control" id="searchText" name="searchText" th:value="${param.searchText}">
+      </div>
+      <button type="submit" class="btn btn-dark mb-2">Search</button>
+    </form>
+
+    <tr th:each="board : ${boards}">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title" th:text="${board.title}"></h5>
+          <p class="card-text"><small class="text-muted" th:text="${board.id}">작성자</small></p>
+          <p class="card-text"th:text="${board.content}">내용</p>
+          <small class="text-muted">Last updated 3 mins ago</small>
         </div>
+        <div class="card-footer">
+          <div class = "text-right">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">국적</th>
+                  <th scope="col">확진자</th>
+                  <th scope="col">+확진자</th>
+                </tr>
+              </thead>
+              <tbody>
+                <td >Korea</td>
+                <td>12323123</td>
+                <td>+12323</td>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </tr>
+
+    <div>
+      <a class="btn pmd-btn-fab pmd-ripple-effect btn-outline-primary" type="button" th:href="@{/board/form}"><i class="material-icons pmd-sm">Write</i></a>
+    </div>
+<!--     <div class="blog-post">
+      <link th:href="@{/css/postcard.css}" rel="stylesheet">
+      <div class = "blog-post__img">
+        <img src = "images/pst-photo.jpg" alt="">        
+      </div>
+
+      <h1 class="blog-post__title">Sharrk sighting</h1>
+      <p class="blog-post__text">
+        asdaf
+      </p>
+      <div class="blog-post__date">
+        <span>Sunday</span>
+        <span>October 27</span>
+      </div>
+    </div> -->
+    
+  <!--   <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">제목</th>
+          <th scope="col">내용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="board : ${boards}">
+          <td th:text="${board.id}"></td>
+          <td><a th:text="${board.title}" th:href="@{/board/form(id=${board.id})}"></a></td>
+          <td th:text="${board.id}"></td>
+        </tr>
+      </tbody>
+    </table> -->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+
+        <li class="page-item disabled">
+          <a class="page-link" th:href="@{/board/list(page=${boards.pageable.pageNumber - 1})}" tabindex="-1"
+            aria-disabled="true">Previous</a>
+        </li>
+
+        <li class="page-item" th:classappend="${i == boards.pageable.pageNumber+1} ? 'disabled'" th:each="i: ${#numbers.sequence(startPage, endPage)}">
+          <a class="page-link" href="#" th:href = "@{/board/list(page=${i-1})}" th:text="${i}"></a>
+        </li>
+              
+        <li class="page-item" th:classappend="${boards.totalPages == boards.pageable.pageNumber + 1} ? 'disabled'">
+          <a class="page-link" th:href = "@{/board/list(page=${boards.pageable.pageNumber + 1})}" >Next</a>
+        </li>
+      </ul>
+    </nav>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -52,5 +122,4 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
 </body>
-
 </html>
