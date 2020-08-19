@@ -45,9 +45,11 @@ What is this for?
 * [Info Ip](infoip.io)
 
 ### 구현 상황
-* 회원가입, 로그인, 로그아웃
-* 회원정보 암호화, 회원 권한 관리
-* 게시글 작성 & 수정 & 검색
+* 회원가입, 로그인, 로그아웃 구현 & 회원 정보 유효성 검사
+* Bootstrap 활용, 반응형 웹 구현
+* Spring Security 회원정보 암호화, 회원 권한 관리
+* 게시글 작성&수정&검색 구현
+* Pageable 이용한 Page Navigator 구현
 
 ### Todo List
 * 사용자 위치기반 주변 선별 진료소 정보 표시
