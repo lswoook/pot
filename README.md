@@ -32,7 +32,6 @@
 <!-- ABOUT THE PROJECT -->
 ## 프로젝트 배경
 
-[![W.I.P][W.I.P]](https://example.com)
 What is this for?
 * 코로나로 인한 국제적 정서 나누기
 * 로컬 정보 공유 :smile:
