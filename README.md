@@ -20,7 +20,7 @@
   <p align="center">
     Covid-19 국제적 불안감 해소를 위한 작은 커뮤니티
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>소개문서 »</strong></a>
+    <a href="https://drive.google.com/file/d/1Oz4__s-C38lkPFM9LhQ9PPjNQbR_-v4R/view?usp=sharing"><strong>소개문서 »</strong></a>
     <br />
     <br />
     ·
@@ -34,9 +34,8 @@
 
 [![W.I.P][W.I.P]](https://example.com)
 What is this for?
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+* 코로나로 인한 국제적 정서 나누기
+* 로컬 정보 공유 :smile:
 
 
 ### Built With
