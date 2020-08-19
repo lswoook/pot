@@ -11,8 +11,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdFZNuu%2FbtqDvYyvP9h%2FK84TeQn8Vxrfmbvclziixk%2Fimg.jpg">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="">
+    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdFZNuu%2FbtqDvYyvP9h%2FK84TeQn8Vxrfmbvclziixk%2Fimg.jpg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Covid-19 Lounge</h3>
